@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Exercise Snacks tings</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<div class="inner">
+							<header>
+								<h1>Hi! Looking for a mobility routine? Click below for what you're looking for</h1>
+								<button onclick="toggleVisibility()"> Click dis tingy </button>
+								<form>
+									<div class="checkbox-container"> 
+										<div class="selectText bodyPart" style="display:inline-block;">
+											<h4>What body part are you trying to target?</h4>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="spine" name="spine" value="Spine">
+											<label for="spine"> Spine</label><br>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="hips" name="hips" value="Hips">
+											<label for="hips"> Hips</label><br>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="totalbody" name="totalbody" value="Total Body">
+											<label for="totalbody"> Total Body</label><br><br>
+										</div>
+										<div class = "selectText timePart" style="display:inline-block;">
+											<h4>How much time do you have?</h4>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="5min" name="5min" value="5min">
+											<label for="5min">< 5 min</label><br>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="10min" name="10min" value="10min">
+											<label for="10min">< 10 min.</label><br>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="over10min" name="over10min" value="over10min">
+											<label for="over10min">> 10 min.</label>
+										</div>
+<!-- 										<div class = "selectText activityPart" style="display:inline-block;">
+											<h4>How much time do you have?</h4>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
+											<label for="mobility">Mobility</label><br>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="conditioning" name="conditioning" value="conditioning">
+											<label for="conditioning">Conditioning</label><br>
+											<input onChange = "valueUpdate(this)" type="checkbox" id="core" name="core" value="core">
+											<label for="core">Core</label>
+										</div> -->
+									  <center><button class="finalButton" onclick="filterResults()">Apply</button></center>
+									  <!-- <button onclick="toggleVisibility()"> Click dis "tingy </button> -->
+								  </div>
+								</form>
+							</header>
+							<section class="tiles">
+								<article class="10min upperbody spine back">
+									<span class="image">
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/tv/CGfSbnYgQSF/?utm_source=ig_web_copy_link">
+										<h2>Spine, Neck, & Back Mobility</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 8 min.</p>
+											<p><strong>Equipment:</strong> Chair</p>
+										</div>
+									</a>
+								</article>
+								<article class="5min upperbody spine back style2">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/p/CEzF56kgsHb/?utm_source=ig_web_copy_link">
+										<h2>Spine Mobility</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 5 min.</p>
+											<p><strong>Equipment:</strong>Mat/Blanket for Knees</p>
+										</div>
+									</a>
+								</article>
+								<article class="over10min totalbody upperbody lowerbody style3">
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/tv/CEhosExAvqC/?utm_source=ig_web_copy_link">
+										<h2>Morning Mobility & Tissue Floss</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 18 min.</p>
+											<p><strong>Equipment:</strong>Mat/Blanket for Knees</p>
+										</div>
+									</a>
+								</article>
+								<article class="upperbody totalbody 10min style4">
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/p/CDmJTmaA36B/?utm_source=ig_web_copy_link">
+										<h2>Running Standing Warm-up</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 10 min.</p>
+											<p><strong>Equipment:</strong>None</p>
+										</div>
+									</a>
+								</article>
+								<article class="10min style5">
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/tv/CDjzyZ5ALYM/?utm_source=ig_web_copy_link">
+										<h2>Digestion & Energy Circuit</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 10 min.</p>
+											<p><strong>Equipment:</strong>Mat</p>
+										</div>
+									</a>
+								</article>
+								<article class="totalbody over10min style6">
+									<span class="image">
+										<img src="images/pic06.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/tv/CCeJ1idgzhA/?utm_source=ig_web_copy_link">
+										<h2>Warm-up Flow</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 18 min.</p>
+											<p><strong>Equipment:</strong>Jump rope & Glute band</p>
+										</div>
+									</a>
+								</article>
+								<article class="lowerbody over10min style2">
+									<span class="image">
+										<img src="images/pic07.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/tv/CCLvx2GAWAt/?utm_source=ig_web_copy_link">
+										<h2>Morning Mobility</h2>
+										<div class="content">
+											<p><strong>Time:</strong> 15 min.</p>
+											<p><strong>Equipment:</strong>Mat or Blanket for Knees</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/pic08.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/p/CADZAiVg3l7/?utm_source=ig_web_copy_link">
+										<h2>Mobility Routine</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="images/pic09.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/p/B-Iw2TCAouc/?utm_source=ig_web_copy_link">
+										<h2>Mobility & Wind-down routine</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/pic10.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/p/B9-QjdQgjZE/?utm_source=ig_web_copy_link">
+										<h2>Activation & Joints</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="images/pic11.jpg" alt="" />
+									</span>
+									<a target = "_blank" href="https://www.instagram.com/p/B94q7IvnUOk/?utm_source=ig_web_copy_link">
+										<h2>Quick Snacks</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/pic12.jpg" alt="" />
+									</span>
+									<a href="generic.html">
+										<h2>Pretium</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+
+					</footer>
+
+			</div>
+			<style type="text/css">
+				.checkbox-container{
+					display:grid;
+					grid-template-rows: 2;
+					grid-template-columns: 1fr 1fr;
+					grid-area:
+						"bodyPart timePart";
+				}
+				article{
+					display: block;
+				}
+			</style>
+
+		<!-- Scripts -->
+			<script src="index.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
