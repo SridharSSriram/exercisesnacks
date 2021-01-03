@@ -1,185 +1,384 @@
-/*
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+$(function () {
 
-(function($) {
+    "use strict";
 
-	var	$window = $(window),
-		$body = $('body');
+    //===== Prealoder
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
+    $(window).on('load', function (event) {
+        $('.preloader').delay(500).fadeOut(500);
+    });
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
 
-	// Touch?
-		if (browser.mobile)
-			$body.addClass('is-touch');
+    //===== Sticky
 
-	// Forms.
-		var $form = $('form');
+    $(window).on('scroll', function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll < 20) {
+            $(".navbar-area").removeClass("sticky");
+            $(".navbar .navbar-brand img").attr("src", "assets/images/logo.svg");
+        } else {
+            $(".navbar-area").addClass("sticky");
+            $(".navbar .navbar-brand img").attr("src", "assets/images/logo-2.svg");
+        }
+    });
 
-		// Auto-resizing textareas.
-			$form.find('textarea').each(function() {
 
-				var $this = $(this),
-					$wrapper = $('<div class="textarea-wrapper"></div>'),
-					$submits = $this.find('input[type="submit"]');
 
-				$this
-					.wrap($wrapper)
-					.attr('rows', 1)
-					.css('overflow', 'hidden')
-					.css('resize', 'none')
-					.on('keydown', function(event) {
+    //===== Section Menu Active
 
-						if (event.keyCode == 13
-						&&	event.ctrlKey) {
+    var scrollLink = $('.page-scroll');
+    // Active link switching
+    $(window).scroll(function () {
+        var scrollbarLocation = $(this).scrollTop();
 
-							event.preventDefault();
-							event.stopPropagation();
+        scrollLink.each(function () {
 
-							$(this).blur();
+            var sectionOffset = $(this.hash).offset().top - 73;
 
-						}
+            if (sectionOffset <= scrollbarLocation) {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            }
+        });
+    });
 
-					})
-					.on('blur focus', function() {
-						$this.val($.trim($this.val()));
-					})
-					.on('input blur focus --init', function() {
 
-						$wrapper
-							.css('height', $this.height());
+    //===== close navbar-collapse when a  clicked
 
-						$this
-							.css('height', 'auto')
-							.css('height', $this.prop('scrollHeight') + 'px');
+    $(".navbar-nav a").on('click', function () {
+        $(".navbar-collapse").removeClass("show");
+    });
 
-					})
-					.on('keyup', function(event) {
+    $(".navbar-toggler").on('click', function () {
+        $(this).toggleClass("active");
+    });
 
-						if (event.keyCode == 9)
-							$this
-								.select();
+    $(".navbar-nav a").on('click', function () {
+        $(".navbar-toggler").removeClass('active');
+    });    
+    
 
-					})
-					.triggerHandler('--init');
+    //====== Magnific Popup
 
-				// Fix.
-					if (browser.name == 'ie'
-					||	browser.mobile)
-						$this
-							.css('max-height', '10em')
-							.css('overflow-y', 'auto');
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+        // other options
+    });
 
-			});
 
-	// Menu.
-		var $menu = $('#menu');
+    //===== Magnific Popup
 
-		$menu.wrapInner('<div class="inner"></div>');
+    $('.image-popup').magnificPopup({
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
 
-		$menu._locked = false;
 
-		$menu._lock = function() {
+    //===== Counter Up
 
-			if ($menu._locked)
-				return false;
+    $('.counter').counterUp({
+        delay: 10,
+        time: 3000
+    });
 
-			$menu._locked = true;
 
-			window.setTimeout(function() {
-				$menu._locked = false;
-			}, 350);
+    //===== testimonial active
 
-			return true;
+    $('.testimonial-active').slick({
+        dots: true,
+        speed: 800,
+        arrows: false,
+        centerMode: true,
+        centerPadding: "0",
+        slidesToShow: 3,
+        slidesToScroll: 4,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: false,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
 
-		};
 
-		$menu._show = function() {
+    //===== Back to top
 
-			if ($menu._lock())
-				$body.addClass('is-menu-visible');
+    // Show or hide the sticky footer button
+    $(window).on('scroll', function (event) {
+        if ($(this).scrollTop() > 600) {
+            $('.back-to-top').fadeIn(200)
+        } else {
+            $('.back-to-top').fadeOut(200)
+        }
+    });
 
-		};
 
-		$menu._hide = function() {
+    //Animate the scroll to yop
+    $('.back-to-top').on('click', function (event) {
+        event.preventDefault();
 
-			if ($menu._lock())
-				$body.removeClass('is-menu-visible');
+        $('html, body').animate({
+            scrollTop: 0,
+        }, 1500);
+    });
 
-		};
 
-		$menu._toggle = function() {
+    //=====  WOW active
 
-			if ($menu._lock())
-				$body.toggleClass('is-menu-visible');
+    new WOW().init();
 
-		};
 
-		$menu
-			.appendTo($body)
-			.on('click', function(event) {
-				event.stopPropagation();
-			})
-			.on('click', 'a', function(event) {
+    //=====  particles
 
-				var href = $(this).attr('href');
 
-				event.preventDefault();
-				event.stopPropagation();
+    if (document.getElementById("particles-1")) particlesJS("particles-1", {
+        "particles": {
+            "number": {
+                "value": 40,
+                "density": {
+                    "enable": !0,
+                    "value_area": 4000
+                }
+            },
+            "color": {
+                "value": ["#FFFFFF", "#FFFFFF", "#FFFFFF"]
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#fff"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 33,
+                    "height": 33
+                }
+            },
+            "opacity": {
+                "value": 0.15,
+                "random": !0,
+                "anim": {
+                    "enable": !0,
+                    "speed": 0.2,
+                    "opacity_min": 0.15,
+                    "sync": !1
+                }
+            },
+            "size": {
+                "value": 50,
+                "random": !0,
+                "anim": {
+                    "enable": !0,
+                    "speed": 2,
+                    "size_min": 5,
+                    "sync": !1
+                }
+            },
+            "line_linked": {
+                "enable": !1,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": !0,
+                "speed": 1,
+                "direction": "top",
+                "random": !0,
+                "straight": !1,
+                "out_mode": "out",
+                "bounce": !1,
+                "attract": {
+                    "enable": !1,
+                    "rotateX": 600,
+                    "rotateY": 600
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": !1,
+                    "mode": "bubble"
+                },
+                "onclick": {
+                    "enable": !1,
+                    "mode": "repulse"
+                },
+                "resize": !0
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1,
+                    }
+                },
+                "bubble": {
+                    "distance": 250,
+                    "size": 0,
+                    "duration": 2,
+                    "opacity": 0,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 400,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": !0
+    });
 
-				// Hide.
-					$menu._hide();
+    if (document.getElementById("particles-2")) particlesJS("particles-2", {
+        "particles": {
+            "number": {
+                "value": 40,
+                "density": {
+                    "enable": !0,
+                    "value_area": 4000
+                }
+            },
+            "color": {
+                "value": ["#FFFFFF", "#FFFFFF", "#FFFFFF"]
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#fff"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 33,
+                    "height": 33
+                }
+            },
+            "opacity": {
+                "value": 0.15,
+                "random": !0,
+                "anim": {
+                    "enable": !0,
+                    "speed": 0.2,
+                    "opacity_min": 0.15,
+                    "sync": !1
+                }
+            },
+            "size": {
+                "value": 50,
+                "random": !0,
+                "anim": {
+                    "enable": !0,
+                    "speed": 2,
+                    "size_min": 5,
+                    "sync": !1
+                }
+            },
+            "line_linked": {
+                "enable": !1,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": !0,
+                "speed": 1,
+                "direction": "top",
+                "random": !0,
+                "straight": !1,
+                "out_mode": "out",
+                "bounce": !1,
+                "attract": {
+                    "enable": !1,
+                    "rotateX": 600,
+                    "rotateY": 600
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": !1,
+                    "mode": "bubble"
+                },
+                "onclick": {
+                    "enable": !1,
+                    "mode": "repulse"
+                },
+                "resize": !0
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1,
+                    }
+                },
+                "bubble": {
+                    "distance": 250,
+                    "size": 0,
+                    "duration": 2,
+                    "opacity": 0,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 400,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": !0
+    });
 
-				// Redirect.
-					if (href == '#menu')
-						return;
 
-					window.setTimeout(function() {
-						window.location.href = href;
-					}, 350);
 
-			})
-			.append('<a class="close" href="#menu">Close</a>');
 
-		$body
-			.on('click', 'a[href="#menu"]', function(event) {
 
-				event.stopPropagation();
-				event.preventDefault();
 
-				// Toggle.
-					$menu._toggle();
-
-			})
-			.on('click', function(event) {
-
-				// Hide.
-					$menu._hide();
-
-			})
-			.on('keydown', function(event) {
-
-				// Hide on escape.
-					if (event.keyCode == 27)
-						$menu._hide();
-
-			});
-
-})(jQuery);
+});

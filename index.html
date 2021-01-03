@@ -1,244 +1,529 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Exercise Snacks tings</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+<!doctype html>
+<html class="no-js" lang="en">
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-					</nav>
+<head>
+    <meta charset="utf-8">
+    
+    <!--====== Title ======-->
+    <title>Exercise Snacks Mobility</title>
+    
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-				<!-- Main -->
-					<div id="main">
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+        
+    <!--====== Animate CSS ======-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+        
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+        
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.css">
+        
+    <!--====== Font Awesome CSS ======-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+    
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+</head>
 
-						<div class="inner">
-							<header>
-								<h1>Hi! Looking for a mobility routine? Click below for what you're looking for</h1>
-								<button onclick="toggleVisibility()"> Click dis tingy </button>
-								<form>
-									<div class="checkbox-container"> 
-										<div class="selectText bodyPart" style="display:inline-block;">
-											<h4>What body part are you trying to target?</h4>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="spine" name="spine" value="Spine">
-											<label for="spine"> Spine</label><br>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="hips" name="hips" value="Hips">
-											<label for="hips"> Hips</label><br>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="totalbody" name="totalbody" value="Total Body">
-											<label for="totalbody"> Total Body</label><br><br>
-										</div>
-										<div class = "selectText timePart" style="display:inline-block;">
-											<h4>How much time do you have?</h4>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="5min" name="5min" value="5min">
-											<label for="5min">< 5 min</label><br>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="10min" name="10min" value="10min">
-											<label for="10min">< 10 min.</label><br>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="over10min" name="over10min" value="over10min">
-											<label for="over10min">> 10 min.</label>
-										</div>
-<!-- 										<div class = "selectText activityPart" style="display:inline-block;">
-											<h4>How much time do you have?</h4>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
-											<label for="mobility">Mobility</label><br>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="conditioning" name="conditioning" value="conditioning">
-											<label for="conditioning">Conditioning</label><br>
-											<input onChange = "valueUpdate(this)" type="checkbox" id="core" name="core" value="core">
-											<label for="core">Core</label>
-										</div> -->
-									  <center><button class="finalButton" onclick="filterResults()">Apply</button></center>
-									  <!-- <button onclick="toggleVisibility()"> Click dis "tingy </button> -->
-								  </div>
-								</form>
-							</header>
-							<section class="tiles">
-								<article class="10min upperbody spine back">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/tv/CGfSbnYgQSF/?utm_source=ig_web_copy_link">
-										<h2>Spine, Neck, & Back Mobility</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 8 min.</p>
-											<p><strong>Equipment:</strong> Chair</p>
-										</div>
-									</a>
-								</article>
-								<article class="5min upperbody spine back style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/p/CEzF56kgsHb/?utm_source=ig_web_copy_link">
-										<h2>Spine Mobility</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 5 min.</p>
-											<p><strong>Equipment:</strong>Mat/Blanket for Knees</p>
-										</div>
-									</a>
-								</article>
-								<article class="over10min totalbody upperbody lowerbody style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/tv/CEhosExAvqC/?utm_source=ig_web_copy_link">
-										<h2>Morning Mobility & Tissue Floss</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 18 min.</p>
-											<p><strong>Equipment:</strong>Mat/Blanket for Knees</p>
-										</div>
-									</a>
-								</article>
-								<article class="upperbody totalbody 10min style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/p/CDmJTmaA36B/?utm_source=ig_web_copy_link">
-										<h2>Running Standing Warm-up</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 10 min.</p>
-											<p><strong>Equipment:</strong>None</p>
-										</div>
-									</a>
-								</article>
-								<article class="10min style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/tv/CDjzyZ5ALYM/?utm_source=ig_web_copy_link">
-										<h2>Digestion & Energy Circuit</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 10 min.</p>
-											<p><strong>Equipment:</strong>Mat</p>
-										</div>
-									</a>
-								</article>
-								<article class="totalbody over10min style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/tv/CCeJ1idgzhA/?utm_source=ig_web_copy_link">
-										<h2>Warm-up Flow</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 18 min.</p>
-											<p><strong>Equipment:</strong>Jump rope & Glute band</p>
-										</div>
-									</a>
-								</article>
-								<article class="lowerbody over10min style2">
-									<span class="image">
-										<img src="images/pic07.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/tv/CCLvx2GAWAt/?utm_source=ig_web_copy_link">
-										<h2>Morning Mobility</h2>
-										<div class="content">
-											<p><strong>Time:</strong> 15 min.</p>
-											<p><strong>Equipment:</strong>Mat or Blanket for Knees</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/p/CADZAiVg3l7/?utm_source=ig_web_copy_link">
-										<h2>Mobility Routine</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/p/B-Iw2TCAouc/?utm_source=ig_web_copy_link">
-										<h2>Mobility & Wind-down routine</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/p/B9-QjdQgjZE/?utm_source=ig_web_copy_link">
-										<h2>Activation & Joints</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a target = "_blank" href="https://www.instagram.com/p/B94q7IvnUOk/?utm_source=ig_web_copy_link">
-										<h2>Quick Snacks</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Pretium</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-							</section>
-						</div>
-					</div>
+<body>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->    
+   
+   
+    <!--====== PRELOADER PART START ======-->
 
-				<!-- Footer -->
-					<footer id="footer">
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-					</footer>
-
+    <!--====== PRELOADER PART ENDS ======-->
+    
+    <!--====== HEADER PART START ======-->
+    
+    <header class="header-area">
+	<h1>Hi! Looking for a mobility routine? Click below for what you're looking for</h1>
+	<form>
+		<div class="checkbox-container"> 
+			<div class="selectText bodyPart" style="display:inline-block;">
+				<h4>What body part are you trying to target?</h4>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="spine" name="spine" value="Spine">
+				<label for="spine"> Spine</label><br>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="hips" name="hips" value="Hips">
+				<label for="hips"> Hips</label><br>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="totalbody" name="totalbody" value="Total Body">
+				<label for="totalbody"> Total Body</label><br><br>
 			</div>
-			<style type="text/css">
-				.checkbox-container{
-					display:grid;
-					grid-template-rows: 2;
-					grid-template-columns: 1fr 1fr;
-					grid-area:
-						"bodyPart timePart";
-				}
-				article{
-					display: block;
-				}
-			</style>
+			<div class = "selectText timePart" style="display:inline-block;">
+				<h4>How much time do you have?</h4>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="min5" name="min5" value="min5">
+				<label for="min5">< 5 min</label><br>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="under10min" name="10min" value="under10min">
+				<label for="under10min">< 10 min.</label><br>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="over10min" name="over10min" value="over10min">
+				<label for="over10min">> 10 min.</label>
+			</div>
+<!-- 										<div class = "selectText activityPart" style="display:inline-block;">
+				<h4>How much time do you have?</h4>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
+				<label for="mobility">Mobility</label><br>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="conditioning" name="conditioning" value="conditioning">
+				<label for="conditioning">Conditioning</label><br>
+				<input onChange = "valueUpdate(this)" type="checkbox" id="core" name="core" value="core">
+				<label for="core">Core</label>
+			</div> -->
+		  <center><button class="finalButton" onclick="filterResults()">Apply</button></center>
+		  <!-- <button onclick="toggleVisibility()"> Click dis "tingy </button> -->
+	  </div>
+	</form>
+    </header>
+    
+    <!--====== HEADER PART ENDS ======-->
+    
+    <!--====== SERVICES PART START ======-->
+    
+    <section id="features" class="services-area pt-120" style="background-color: #F4F4F4;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section-title text-center pb-40">
+                        <div class="line m-auto"></div>
+                        <h3 class="title">Mobility snacks<span> An easy way to fit your snacks into your day</span></h3>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+            <div class="row justify-content-center" id="cardcontainer">
+<!--                 <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Sunday School Mobility</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full body | hips | spine | legs | core</p>
+                            <p><strong>Time: </strong> 8 min.</p>
+                            <p><strong>Equipment: </strong> Mat if needed</p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/CJCNTW5gfuu/?igshid=1ata3bxhjzk22">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 min5" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Blood booster</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full body | core</p>
+                            <p class="text"><strong>Time: </strong> 5 min.</p>
+                            <p class="text"><strong>Equipment: </strong> N/A </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CI30yVfAT-M/?igshid=kg1hk4a8j4me">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+               	<div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Spine, Neck, & Shoulders</a></h4>
+                            <p class="text"><strong>Body part: </strong> Upper body | Spine | Hips | neck</p>
+                            <p class="text"><strong>Time: </strong> 8 min.</p>
+                            <p class="text"><strong>Equipment: </strong> chair </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CIvv3JJg-uG/?igshid=1072tal6tjb7n">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 over10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">13 minutes of fresh</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full Body | Spine | Wrist | Ankles</p>
+                            <p class="text"><strong>Time: </strong> 13 min.</p>
+                            <p class="text"><strong>Equipment: </strong> chair </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CHYEHE7AFY-/?igshid=6s263pq67pko">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Neck & Spine Circuit</a></h4>
+                            <p class="text"><strong>Body part: </strong> Spine | Neck | Back</p>
+                            <p class="text"><strong>Time: </strong> 8 min.</p>
+                            <p class="text"><strong>Equipment: </strong> chair </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CGfSbnYgQSF/?igshid=1biuxdf488zbj">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 min5" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Nervous System Spinal Sequence</a></h4>
+                            <p class="text"><strong>Body part: </strong> Spine | Shoulder</p>
+                            <p class="text"><strong>Time: </strong> 5 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/CEzF56kgsHb/?igshid=12nb5sn4kit4c">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 over10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Morning Mobility: Tissue Floss Flow</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full Body | Hips | Upper Body</p>
+                            <p class="text"><strong>Time: </strong> 18 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CEhosExAvqC/?igshid=14iudsav311mv">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Standing Runners Warm-up</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full Body | Spine | Legs | Hips</p>
+                            <p class="text"><strong>Time: </strong> 10 min.</p>
+                            <p class="text"><strong>Equipment: </strong> N/A </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/CDmJTmaA36B/?igshid=a7y44dewqdsz">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Digestion & Energy Circuit</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full Body </p>
+                            <p class="text"><strong>Time: </strong> 10 min.</p>
+                            <p class="text"><strong>Equipment: </strong> N/A </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CDjzyZ5ALYM/?igshid=1l5osea2611fl">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 over10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Morning Mobility</a></h4>
+                            <p class="text"><strong>Body part: </strong> Full Body | Upper Body</p>
+                            <p class="text"><strong>Time: </strong> 15 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/tv/CCLvx2GAWAt/?igshid=m6gf662v1ify">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Mobility Routine</a></h4>
+                            <p class="text"><strong>Body part: </strong> Lower Body | Spine | Hips</p>
+                            <p class="text"><strong>Time: </strong> 8 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/CADZAiVg3l7/?igshid=754jpfqyy9hr">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Kirsty Godso x OchoSystem Stability series</a></h4>
+                            <p class="text"><strong>Body part: </strong> Hip | Core | Upper Body</p>
+                            <p class="text"><strong>Time: </strong> 10 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/B_fsfYagdDB/?igshid=y2jagsx84dd7">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 min5" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Naomi Campbell x OchoSystem Stability Workout</a></h4>
+                            <p class="text"><strong>Body part: </strong> Lower Body | Core</p>
+                            <p class="text"><strong>Time: </strong> 5 min.</p>
+                            <p class="text"><strong>Equipment: </strong> N/A </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/B-iNIfEAVyP/?igshid=1q3mxj612d3vs">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 under10min" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Mobility & Wind-down Drills</a></h4>
+                            <p class="text"><strong>Body part: </strong> Spine | Hip | Legs</p>
+                            <p class="text"><strong>Time: </strong> 8 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Chair & mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/B-Iw2TCAouc/?igshid=151p3scnvdaoo">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-8 min5" >
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-1.svg" alt="shape">
+                            <i class="lni-baloon"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Naomi Campbell & OchoSystem Activation/Joints</a></h4>
+                            <p class="text"><strong>Body part: </strong> Legs | Hips | Lower Body</p>
+                            <p class="text"><strong>Time: </strong> 5 min.</p>
+                            <p class="text"><strong>Equipment: </strong> Mat </p>
+                            <a class="more" target="_blank"href="https://www.instagram.com/p/B9-QjdQgjZE/?igshid=134n0ua1tian1">Instagram link <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> 
+                </div> -->
 
-		<!-- Scripts -->
-			<script src="index.js"></script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
-	</body>
+                <!-- <div class="col-lg-4 col-md-7 col-sm-8">
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-2.svg" alt="shape">
+                            <i class="lni-cog"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Robust</a></h4>
+                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
+                            <a class="more" href="#">Learn More <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div>  --><!-- single services -->
+                <!-- </div> -->
+<!--                 <div class="col-lg-4 col-md-7 col-sm-8">
+                    <div class="single-services text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
+                        <div class="services-icon">
+                            <img class="shape" src="assets/images/services-shape.svg" alt="shape">
+                            <img class="shape-1" src="assets/images/services-shape-3.svg" alt="shape">
+                            <i class="lni-bolt-alt"></i>
+                        </div>
+                        <div class="services-content mt-30">
+                            <h4 class="services-title"><a href="#">Powerful</a></h4>
+                            <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.</p>
+                            <a class="more" href="#">Learn More <i class="lni-chevron-right"></i></a>
+                        </div>
+                    </div> --> <!-- single services -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    
+    <!--====== SERVICES PART ENDS ======-->
+
+        
+    <!--====== FOOTER PART START ======-->
+    
+    <footer id="footer" class="footer-area pt-120">
+        <div class="container">
+            <div class="footer-widget pb-100">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="footer-about mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <a class="logo" href="#">
+                                <img src="assets/images/logo.svg" alt="logo">
+                            </a>
+                            <p class="text">Lorem ipsum dolor sit amet consetetur sadipscing elitr, sederfs diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                            <ul class="social">
+                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
+                                <li><a href="#"><i class="lni-instagram-filled"></i></a></li>
+                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                            </ul>
+                        </div> <!-- footer about -->
+                    </div>
+                    <div class="col-lg-5 col-md-7 col-sm-7">
+                        <div class="footer-link d-flex mt-50 justify-content-md-between">
+                            <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+                                <div class="footer-title">
+                                    <h4 class="title">Quick Link</h4>
+                                </div>
+                                <ul class="link">
+                                    <li><a href="#">Road Map</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Refund Policy</a></li>
+                                    <li><a href="#">Terms of Service</a></li>
+                                    <li><a href="#">Pricing</a></li>
+                                </ul>
+                            </div> <!-- footer wrapper -->
+                            <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
+                                <div class="footer-title">
+                                    <h4 class="title">Resources</h4>
+                                </div>
+                                <ul class="link">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Page</a></li>
+                                    <li><a href="#">Portfolio</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div> <!-- footer wrapper -->
+                        </div> <!-- footer link -->
+                    </div>
+                    <div class="col-lg-3 col-md-5 col-sm-5">
+                        <div class="footer-contact mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
+                            <div class="footer-title">
+                                <h4 class="title">Contact Us</h4>
+                            </div>
+                            <ul class="contact">
+                                <li>+809272561823</li>
+                                <li>info@gmail.com</li>
+                                <li>www.yourweb.com</li>
+                                <li>123 Stree New York City , United <br> States Of America 750.</li>
+                            </ul>
+                        </div> <!-- footer contact -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- footer widget -->
+            <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright d-sm-flex justify-content-between">
+                            <div class="copyright-content">
+                                <p class="text">Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
+                            </div> <!-- copyright content -->
+                        </div> <!-- copyright -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- footer copyright -->
+        </div> <!-- container -->
+        <div id="particles-2"></div>
+    </footer>
+    
+    <!--====== FOOTER PART ENDS ======-->
+    
+    <!--====== BACK TOP TOP PART START ======-->
+
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+
+    <!--====== BACK TOP TOP PART ENDS ======-->   
+    
+
+
+    <script src="assets/js/index.js"></script>
+
+    <!--====== Jquery js ======-->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <!--====== Plugins js ======-->
+    <script src="assets/js/plugins.js"></script>
+    
+    <!--====== Slick js ======-->
+    <script src="assets/js/slick.min.js"></script>
+    
+    <!--====== Ajax Contact js ======-->
+    <script src="assets/js/ajax-contact.js"></script>
+    
+    <!--====== Counter Up js ======-->
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    
+    <!--====== Magnific Popup js ======-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    
+    <!--====== Scrolling Nav js ======-->
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/scrolling-nav.js"></script>
+    
+    <!--====== wow js ======-->
+    <script src="assets/js/wow.min.js"></script>
+    
+    <!--====== Particles js ======-->
+    <script src="assets/js/particles.min.js"></script>
+    
+    <!--====== Main js ======-->
+    <script src="assets/js/main.js"></script>
+    
+</body>
+
 </html>
