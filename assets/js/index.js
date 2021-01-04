@@ -108,11 +108,12 @@ var workout_database = [
 
 	];
 
+var LOWER_BODY = ["Lower Body", "Hips", "Ankles", "Legs"];
+var UPPER_BODY = ["Upper Body", "Spine", "Arms", "Back", "Neck", "Wrists"];
 
-var card_container = document.getElementById("cardcontainer");
-workout_database.forEach(function(workout_entry){
+function generate_HTML_card(workout_entry){
 	var wrapper_div=document.createElement('div');
-		wrapper_div.className="col-lg-4 col-md-7 col-sm-8";
+		wrapper_div.className="col-lg-4 col-md-7 col-sm-8 workoutcard";
 
 	// console.log(workout_entry);
 	var big_div = document.createElement('div');
@@ -148,8 +149,14 @@ workout_database.forEach(function(workout_entry){
 
 	big_div.appendChild(smaller_div);
 	wrapper_div.appendChild(big_div);
+	return wrapper_div;
 
-	card_container.appendChild(wrapper_div);
+}
+
+var card_container = document.getElementById("cardcontainer");
+workout_database.forEach(function(workout_entry){
+
+	card_container.appendChild(generate_HTML_card(workout_entry));
 
 	// console.log(big_div);
 });
@@ -170,6 +177,8 @@ workout_database.forEach(function(workout_entry){
 //     </div> 
 // </div>
 
+
+
 function toggleVisibility(passed_in_item){
 		if (passed_in_item.style.display === "none") {
 			passed_in_item.style.display = "block";
@@ -178,7 +187,7 @@ function toggleVisibility(passed_in_item){
 		}
 }
 var value_array = [];
-var article_list = document.querySelectorAll('article');
+var article_list = document.querySelectorAll('.workoutcard');
 console.log(article_list);
 
 function valueUpdate(totalItems){
