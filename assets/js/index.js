@@ -129,7 +129,7 @@ function generate_HTML_card(workout_entry){
 
 	var body_part = document.createElement("p");
 		body_part.className="text";
-		body_part.innerHTML="Body part: "+workout_entry.targetedBodyPart;
+		body_part.innerHTML="<strong>Body part:</strong> "+workout_entry.targetedBodyPart;
 		smaller_div.appendChild(body_part);
 
 	var duration = document.createElement("p");
