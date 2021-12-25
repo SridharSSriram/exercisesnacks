@@ -29,12 +29,13 @@
 /*===========================
      01.COMMON css 
 ===========================*/
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,700|Lato:300,400,700&display=swap");
+/*@import url("https://fonts.googleapis.com/css?family=Poppins:400,700|Lato:300,400,700&display=swap");*/
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Courier";
   font-weight: normal;
   font-style: normal;
-  color: #6A6972;
+  /*color: #6A6972;*/
+  color: black;
   overflow-x: hidden; }
 
 * {
@@ -74,10 +75,9 @@ video {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-weight: 700;
   color: #2E2E2E;
   margin: 0px; }
@@ -91,8 +91,6 @@ h2 {
 h3 {
   font-size: 28px; }
 
-h4 {
-  font-size: 22px; }
 
 h5 {
   font-size: 18px; }
@@ -105,11 +103,19 @@ ul, ol {
   padding: 0px;
   list-style-type: none; }
 
+h4 {
+  font-family: "Courier", serif;
+  font-weight: 400;
+  color: black;
+  margin: 0px;
+  font-size: 22px; 
+}
+
 p {
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  color: #6A6972;
+  color: black;
   margin: 0px; }
 
 .bg_cover {
@@ -548,7 +554,9 @@ p {
 /*===========================
       04.SERVICES css 
 ===========================*/
+
 .single-services {
+  display: block;
   background-color: #fff;
   -webkit-box-shadow: 0px 5px 30px 0px rgba(167, 167, 167, 0.16);
   -moz-box-shadow: 0px 5px 30px 0px rgba(167, 167, 167, 0.16);
@@ -558,9 +566,12 @@ p {
   -ms-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
-  padding: 50px 30px;
+  padding: 20px 30px;
   border: 2px solid transparent;
-  border-radius: 8px; }
+  /*height: 40vh;*/
+  text-align: left;
+  /*border-radius: 8px;*/
+  }
   @media (max-width: 767px) {
     .single-services {
       padding: 20px 20px 30px; } }
@@ -615,8 +626,10 @@ p {
     @media (max-width: 767px) {
       .single-services .services-content .text {
         margin-top: 20px; } }
+
+
   .single-services .services-content .more {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     font-size: 16px;
     font-weight: 400;
     color: #2E2E2E;
@@ -629,10 +642,21 @@ p {
       margin-left: 10px; }
     .single-services .services-content .more:hover {
       color: #361CC1; }
+
+.external_link {
+  color: red;
+  border-style: solid;
+  font-size: 80%;
+  border-width: 1px;
+  border-color: red;
+  border-radius: 10px;
+  background-color: white;
+  padding: 0px 10px 2px 10px;
+}
   
   /* COME HERE FOR CARD BORDER COLOR */
   .single-services:hover {
-    border-color: #ABABAB; }
+    border-color: black; }
     .single-services:hover .services-icon .shape {
       -webkit-transform: rotate(25deg);
       -moz-transform: rotate(25deg);

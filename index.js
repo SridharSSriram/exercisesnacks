@@ -198,30 +198,33 @@ var workout_database = [
 // console.log(database_test);
 
 var database_test_csv_array = $.csv.toObjects("assets/data/addresses.csv");
+
 console.log("this is the database: " + database_test_csv_array);
 console.log("array length: " + database_test_csv_array.length);
 
-readSingleFile("assets/data/addresses.csv");
+// var fr=new FileReader();
+// var fr_test = fr.readAsText("assets/data/addresses.csv");
+// console.log(fr_test);
 
-function readSingleFile(e) {
-  var file = e.target.files[0];
-  if (!file) {
-    return;
-  }
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var contents = e.target.result;
-    displayContents(contents);
-  };
-  reader.readAsText(file);
-}
+// function readSingleFile(e) {
+//   var file = e.target.files[0];
+//   if (!file) {
+//     return;
+//   }
+//   var reader = new FileReader();
+//   reader.onload = function(e) {
+//     var contents = e.target.result;
+//     displayContents(contents);
+//   };
+//   reader.readAsText(file);
+// }
 
-function displayContents(contents) {
-  var element = document.getElementById('file-content');
-  element.textContent = contents;
-}
+// function displayContents(contents) {
+//   var element = document.getElementById('file-content');
+//   element.textContent = contents;
+// }
 
-document.getElementById('file-input').addEventListener('change', readSingleFile, false);
+// document.getElementById('file-input').addEventListener('change', readSingleFile, false);
 // var datatable = [];
 // datatable.rows.add($.csv.toObjects("data/exercisesnacks_workout_archive .csv")).draw();
   
