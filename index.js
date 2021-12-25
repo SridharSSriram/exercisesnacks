@@ -197,10 +197,20 @@ var workout_database = [
 // var database_test = CSVToArray("data/exercisesnacks_workout_archive.csv");
 // console.log(database_test);
 
-var database_test_csv_array = $.csv.toObjects("assets/data/addresses.csv");
+var database_test_csv_array = $.csv.toObjects("/assets/data/addresses.csv");
+
+var fs = require("fs");
+fs.readFile("data/exercisesnacks_workout_archive.csv", function(text){
+    var textByLine = text.split("\n");
+    console.log(textByLine);
+});
+
 
 console.log("this is the database: " + database_test_csv_array);
 console.log("array length: " + database_test_csv_array.length);
+
+
+
 
 // var fr=new FileReader();
 // var fr_test = fr.readAsText("assets/data/addresses.csv");
