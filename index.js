@@ -1,5 +1,4 @@
-
-function generateCards(coredb){
+function load_app(coredb){
 	
 	var card_container = document.getElementById("cardcontainer");
 	// workout_database.forEach(function(workout_entry){
@@ -15,17 +14,13 @@ function generate_HTML_card(workout_entry){
 	var wrapper_div=document.createElement('div');
 		wrapper_div.className="col-lg-4 col-md-7 col-sm-8 workoutcard";
 		wrapper_div.id="workoutcard_"+workout_entry.id;
-		// console.log(wrapper_div.id);
 
-	// console.log(workout_entry);
 	var big_div = document.createElement('div');
 		big_div.className= "single-services mt-30 wow fadeIn";
-		// data-wow-duration="1s" data-wow-delay="0.2s"
 		big_div.setAttribute("data-wow-duration","1s");
 		big_div.setAttribute("data-wow-delay","0.2s");
 	var smaller_div = document.createElement('div');
 		smaller_div.className = "services-content mt-30";
-	// big_div.appendChild(smaller_div);
 	
 	var heading = document.createElement("h4");
 		heading.className="services-title";
@@ -62,6 +57,8 @@ function generate_HTML_card(workout_entry){
 	return wrapper_div;
 
 }
+
+
 // CODE FOR DETECTING IF BODY PART ALIGNS WITH PREFERENCE
 
 var LOWER_BODY = ["lower body", "hips", "ankles", "legs"];

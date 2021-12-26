@@ -31,7 +31,7 @@ def make_json(csvFilePath, jsonFilePath):
         with open(jsonFilePath, 'w', encoding='utf-8') as jsonf: 
 	        jsonString = json.dumps(data, indent=4);
 
-	        # jsonf.write("ExerciseSnacks_Workouts=\'");
+	        jsonf.write("var data = ");
 	        # jsonf.write("{\n\t\"DatasetName\": \"Exercise Snacks Workout Archive\",\n")
 	        # jsonf.write("\t\"lastUpdated\": %s,\n" % dt_string)
 	        # jsonf.write("\t\"workouts\": ")

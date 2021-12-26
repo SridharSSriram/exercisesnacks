@@ -1,4 +1,4 @@
-var plswork = [
+var data = [
     {
         "timestamp": "12/24/2021 17:12:19",
         "name": "Sunday School Mobility",
@@ -31,7 +31,7 @@ var plswork = [
     },
     {
         "timestamp": "12/24/2021 23:20:41",
-        "name": "Morning Movement Routinne",
+        "name": "Morning Movement Routine",
         "type": "Mobility",
         "bodyPart": "Full body",
         "time": "7",
