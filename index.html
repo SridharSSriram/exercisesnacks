@@ -222,10 +222,14 @@
     <script src = "jquery-csv-main/src/jquery.csv.js"></script>
     <script src="index.js"></script>
     <script type="text/text" src="assets/data/exercisesnacks_workout_archive.csv"></script>
+    <script type="text/javascript" src="assets/data/exercisesnacks_workout_archive.json"></script>
 
+<!--     <script type="module" src="assets/data/exercisesnacks_workout_archive.json"></script>
+ -->
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="assets/js/papaparse.min.js"></script>
     
     <!--====== Bootstrap js ======-->
     <script src="assets/js/popper.min.js"></script>
@@ -259,6 +263,9 @@
     
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        generateCards(plswork);
+    </script>
     
 </body>
 
