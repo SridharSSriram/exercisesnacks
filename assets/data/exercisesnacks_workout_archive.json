@@ -102,8 +102,8 @@ var data = [
     {
         "timestamp": "12/24/2021 23:31:01",
         "name": "WFH SEATED SNACK + BREATHING",
-        "type": "Mobility",
-        "bodyPart": "Breathing & Blood flow",
+        "type": "Mobility, Breathing & Blood flow",
+        "bodyPart": "Full body",
         "time": "6",
         "equipment": "Chair/Bench",
         "link": "https://www.instagram.com/tv/CQO9_HdgNs0/?utm_source=ig_web_copy_link",
@@ -182,8 +182,8 @@ var data = [
     {
         "timestamp": "12/24/2021 23:39:29",
         "name": "SEATED SNACK #4: Neck, Spine, and Blood Flow",
-        "type": "Mobility",
-        "bodyPart": "Upper Body, Breathing & Blood flow",
+        "type": "Mobility, Breathing & Blood flow",
+        "bodyPart": "Upper Body",
         "time": "6",
         "equipment": "Chair/Bench",
         "link": "https://www.instagram.com/tv/CMkS6kigj1-/?utm_source=ig_web_copy_link",
@@ -262,8 +262,8 @@ var data = [
     {
         "timestamp": "12/24/2021 23:51:45",
         "name": "EXERCISE SNACK\u2122\ufe0f CLASS #11 \"BLOOD BOOSTER\"",
-        "type": "Mobility",
-        "bodyPart": "Full body, Breathing & Blood flow",
+        "type": "Mobility, Breathing & Blood flow",
+        "bodyPart": "Full body",
         "time": "9",
         "equipment": "None",
         "link": "https://www.instagram.com/tv/CI30yVfAT-M/?utm_source=ig_web_copy_link",
@@ -581,7 +581,7 @@ var data = [
     },
     {
         "timestamp": "12/25/2021 1:08:42",
-        "name": "Star Variations",
+        "name": "Stair Variations",
         "type": "Conditioning",
         "bodyPart": "Full body",
         "time": "15",

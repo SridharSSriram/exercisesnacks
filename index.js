@@ -1,19 +1,53 @@
-function load_app(coredb){
+/*
+TO-DO LISTS:
+[]Responsive sizing
+[] Format of 3 dropdowns
+[] Functionality
+[] Button
+[] README
+[] Tinyurl
+[] Message
+[X] Footer
+[] Disclaimer privacy
+[] Disclaimer inspo
+[] CSS scrub
+[] Selection logic
+
+*/
+
+
+var EXERCISE_SNACKS_DATABASE=[];
+var CURRENT_FILTER = {};
+var ID_TRACKER ={};
+var FILTER_TRACKER=[];
+var UNIVERSAL_ID = [];
+
+function loadApp(database){
+	EXERCISE_SNACKS_DATABASE = database;
 	
 	var card_container = document.getElementById("cardcontainer");
-	// workout_database.forEach(function(workout_entry){
-	// 	card_container.appendChild(generate_HTML_card(workout_entry));
-	// });
-	for (var i = 0; i < coredb.length; i++) {
-		card_container.appendChild(generate_HTML_card(coredb[i]));
+	for (var i = 0; i < database.length; i++) {
+		card_container.appendChild(generateHTMLCard(database[i]));
+	}
+	setUniversalIDtracker();
+	
+}
+
+
+
+function setUniversalIDtracker(){
+	for(var i =0; i<Object.values(EXERCISE_SNACKS_DATABASE).length; i++){
+		var key = String(i);
+		ID_TRACKER[key] = [true];
 	}
 }
 
-function generate_HTML_card(workout_entry){
-	console.log(workout_entry);
+console.log(ID_TRACKER);
+
+function generateHTMLCard(exercise_snack){
 	var wrapper_div=document.createElement('div');
-		wrapper_div.className="col-lg-4 col-md-7 col-sm-8 workoutcard";
-		wrapper_div.id="workoutcard_"+workout_entry.id;
+		wrapper_div.className="col-lg-4 col-md-6 col-sm-8 workoutCard";
+		wrapper_div.id="workoutCard_"+exercise_snack.id;
 
 	var big_div = document.createElement('div');
 		big_div.className= "single-services mt-30 wow fadeIn";
@@ -24,276 +58,198 @@ function generate_HTML_card(workout_entry){
 	
 	var heading = document.createElement("h4");
 		heading.className="services-title";
-		heading.innerHTML = workout_entry.name;
+		heading.innerHTML = exercise_snack.name;
 		smaller_div.appendChild(heading);
 
-	var body_part = document.createElement("p");
-		body_part.className="text";
-		body_part.innerHTML="<strong>Workout Type:</strong> "+workout_entry.type;
-		smaller_div.appendChild(body_part);
+	var workout_type = document.createElement("p");
+		workout_type.className="text";
+		workout_type.innerHTML="<strong>Workout type:</strong> "+exercise_snack.type;
+		smaller_div.appendChild(workout_type);
 
 	var body_part = document.createElement("p");
-		body_part.innerHTML="<strong>Body part:</strong> "+workout_entry.bodyPart;
+		body_part.innerHTML="<strong>Body part:</strong> "+exercise_snack.bodyPart;
 		smaller_div.appendChild(body_part);
 
 	var duration = document.createElement("p");
 		duration.className="workout_duration"
-		duration.innerHTML = "<strong>Time:</strong> " + workout_entry.time +" min.";
+		duration.innerHTML = "<strong>Duration:</strong> " + exercise_snack.time +" min.";
 		smaller_div.appendChild(duration);
 
 	var equipment = document.createElement("p");
-		equipment.innerHTML = "<strong>Equipment:</strong> " + workout_entry.equipment +"<br><br>";
+		equipment.innerHTML = "<strong>Equipment:</strong> " + exercise_snack.equipment +"<br><br>";
 		smaller_div.appendChild(equipment);
 
 	var link = document.createElement("a");
 		link.className="external_link";
 		link.target="_blank";
-		link.href=workout_entry.link;
+		link.href=exercise_snack.link;
 		link.innerHTML="link"
 		smaller_div.appendChild(link);
 
 	big_div.appendChild(smaller_div);
 	wrapper_div.appendChild(big_div);
+	
 	return wrapper_div;
 
 }
 
+function filter(filter_value){
+	var time = ["under10min","under20min","over20min"];
+	var type = ["mobility","conditioning","core","strength","workoutvariations","breathingbloodflow"];
+	var bodypart = ["fullbody","upperbody","lowerbody"];
 
-// CODE FOR DETECTING IF BODY PART ALIGNS WITH PREFERENCE
+	var value = filter_value.value.toLowerCase().replaceAll(" ","").replaceAll("&","");
 
-var LOWER_BODY = ["lower body", "hips", "ankles", "legs"];
-var UPPER_BODY = ["upper body", "spine", "arms", "back", "neck", "wrists"];
-var FULL_BODY = ["full body"];
-
-var testing_tings = "Spine, Hips, Legs";
-
-var spliced_tings = testing_tings.toLowerCase().split(", ");
-
-spliced_tings.forEach(function(ting){
-	if(LOWER_BODY.includes(ting)){
-		console.log("lower body");
-	}else if(UPPER_BODY.includes(ting)){
-		console.log("upper body");
-	} else if(FULL_BODY.includes(ting)){
-		console.log("full body");
+	// check to see if the passed in value is triggered because the checkbox is CHECKED or NOT CHECKED
+	var filter_checked = false;
+	if(document.getElementById(filter_value.id).checked==true){
+		filter_checked=true;
 	}
 
-})
+	var selected_id = [];
+	var test = value in time;
 
+	EXERCISE_SNACKS_DATABASE.forEach(function(workoutEntry){
+		if(time.includes(value)){
+			var snack_time= parseInt(workoutEntry.time.replaceAll(" min.", ""));
 
-
-
-function toggleVisibility(passed_in_item){
-	if (passed_in_item.style.display === "none") {
-		passed_in_item.style.display = "block";
-	} else {
-		passed_in_item.style.display = "none";
-	}
-}
-
-
-var value_array = [];
-var article_list = document.querySelectorAll('.workoutcard');
-
-function valueUpdate(totalItems){
-	// console.log(totalItems);
-	var value_entity = totalItems.value.toLowerCase();
-	if(value_entity.includes(" ")){
-		value_entity=value_entity.replace(" ","");
-	}
-	var workout_list = document.querySelectorAll('.workoutcard');
-	switch (value_entity){
-		case "fullbody":
-			workout_list.forEach(function(workoutentry){
-				if(!(workoutentry.innerHTML.toLowerCase().includes(FULL_BODY))){
-					workoutentry.style.display = "none";
-				}
-				console.log("check this: " + workoutentry);
-			})
-		case "lowerbody":
-			console.log("lowerbod");
-		case "upperbody":
-			console.log("yikies");
-		case "min5":
-			
-			workout_database.forEach(function(workoutentry){
-				if(workoutentry.time >5){
-					// console.log("#workoutcard_"+workoutentry.backend_ID);
-					var hide_this=document.getElementById("workoutcard_"+workoutentry.backend_ID);
-					hide_this.style.display="none";
-					
-				}
-			});
-		case "under10min":
-			
-			workout_database.forEach(function(workoutentry){
-				if(workoutentry.time >10){
-					// console.log("#workoutcard_"+workoutentry.backend_ID);
-					var hide_this=document.getElementById("workoutcard_"+workoutentry.backend_ID);
-					hide_this.style.display="none";
-					
-				}
-			});
-		case "over10min":
-			
-			workout_database.forEach(function(workoutentry){
-				if(workoutentry.time <10){
-					// console.log("#workoutcard_"+workoutentry.backend_ID);
-					var hide_this=document.getElementById("workoutcard_"+workoutentry.backend_ID);
-					hide_this.style.display="none";
-					
-				}
-			});
-	}
-
-
-	var showing_things = document.querySelectorAll('article.'+value_entity);
-	// console.log(showing_things);
-
-	var article_toggle = document.querySelectorAll('article');
-	article_toggle.forEach(function(userItem){
-		// console.log(userItem.className);
-		if(!(userItem.className.includes(value_entity))){
-			toggleVisibility(userItem);
+			if(value=="under10min" && snack_time <=10){
+	 			selected_id.push(workoutEntry.id);
+			} else if (value=="under20min" && snack_time <= 20){
+				selected_id.push(workoutEntry.id);
+			} else if(value =="over20min" && snack_time > 20){
+				selected_id.push(workoutEntry.id);
+			}
+		} else if(type.includes(value)){
+			var snack_type = workoutEntry.type.toLowerCase().replaceAll(" ","").replaceAll("&","");
+			if(value=="mobility" && snack_type.includes("mobility")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="conditioning" && snack_type.includes("conditioning")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="core" && snack_type.includes("core")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="strength" && snack_type.includes("strength")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="workoutvariations" && snack_type.includes("workoutvariations")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="breathingbloodflow" && snack_type.includes("breathingbloodflow")){
+	 			selected_id.push(workoutEntry.id);
+	 		}
+		} else if(bodypart.includes(value)){
+			var snack_bodypart = workoutEntry.bodyPart.toLowerCase().replaceAll(" ","").replaceAll(" & ","");
+			if(value=="fullbody" && snack_bodypart.includes("fullbody")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="upperbody" && snack_bodypart.includes("upperbody")){
+	 			selected_id.push(workoutEntry.id);
+	 		} else if(value=="lowerbody" && snack_bodypart.includes("lowerbody")){
+	 			selected_id.push(workoutEntry.id);
+	 		} 
 		}
-	})
-	if(totalItems.checked){
-		console.log("it's been checked");
-		value_array.push(value_entity);	
-		console.log(value_array);
-		return;
-	} else{
-		console.log("it has NOT BEEN CHECKED");
-		value_array.pop(value_entity);
-		// showing_things.forEach(function(userItem) {
-		// 	toggleVisibility(userItem);
-			
-		// });
 
-	}
-}
-
-function filterResults(){
-	value_array.forEach(function(userItem){
-		console.log(userItem);
-		var applicable_entities=document.querySelectorAll('.'+userItem);
 	});
+
+	//filter_checked == true indicates that the checkbox has been checked
+	/*
+	This is the breakdown of the following section:
+	1. If the checkbox is CHECKED:
+		1A: add checked value to CURRENT_FILTER
+		1B: iterate through the list of IDs and add the checked box ("under10min") to each of the IDs' entries in the ID_TRACKER dictionary
+	2. If the checkbox is UNCHECKED:
+		2A: iterate through list of IDs based on checked box's value enty in the CURRENT FILTER dictionary and remove the checkbox value from the id's key-value pair
+		2B: remove value from CURRENT_FILTER
+	*/
+
+	if(filter_checked){
+		CURRENT_FILTER[value] = selected_id;
+		console.log(Object.keys(CURRENT_FILTER).length);
+		if(UNIVERSAL_ID.length == 0){
+			UNIVERSAL_ID = selected_id;
+		}
+		if(Object.keys(CURRENT_FILTER).length>1){
+	
+			UNIVERSAL_ID = selected_id.filter(function(n) {
+		    	return UNIVERSAL_ID.indexOf(n) !== -1;
+			});
+			console.log(UNIVERSAL_ID);
+			
+		}
+		for(var i = 0; i < UNIVERSAL_ID.length; i++){
+			if(ID_TRACKER[UNIVERSAL_ID[i]] == true){
+				ID_TRACKER[UNIVERSAL_ID[i]] = [value];
+			}else{
+				ID_TRACKER[UNIVERSAL_ID[i]].push(value);
+			}
+		}
+		// console.log(FILTER_TRACKER);
+		if(!FILTER_TRACKER.includes(value)){
+			FILTER_TRACKER.push(value);
+		}
+		// console.log(FILTER_TRACKER);
+	}else{
+		if(value in CURRENT_FILTER){
+			// console.log("pre operations" + FILTER_TRACKER);
+			
+			var filter_index = FILTER_TRACKER.indexOf(value);
+			
+			// console.log("index check "+ filter_index);
+			if(filter_index>-1){
+				if(FILTER_TRACKER.length==1){
+					console.log("size of FILTER_TRACKER " + FILTER_TRACKER.length);
+					console.log(FILTER_TRACKER);
+					FILTER_TRACKER=[];
+				}
+				FILTER_TRACKER=FILTER_TRACKER.splice(filter_index,1);
+			}
+			// console.log(FILTER_TRACKER);
+			for (var id in CURRENT_FILTER[value]){
+				var id_index = ID_TRACKER[id].indexOf(value);
+				if(id_index>-1){
+					// ID_TRACKER[id] = ID_TRACKER[id].splice(id_index,1);
+					if(id_index==1){
+						ID_TRACKER[id] = [true];
+					}else{
+						ID_TRACKER[id]=ID_TRACKER[id].splice(id_index,1);
+
+					}
+				}
+			}
+			delete CURRENT_FILTER[value];
+		}
+	}
+	// var intersected_IDs = CURRENT_FILTER[Object.values(CURRENT_FILTER)[0]];
+	
+	// if(Object.values(CURRENT_FILTER).length >1){
+	// 	for(var i = 1; i < Object.values(CURRENT_FILTER).length; i++){
+	// 		console.log("to validate " + Object.values(CURRENT_FILTER));
+	// 		var check =Object.values(CURRENT_FILTER)[i];
+	// 		console.log("check: " + check);
+			
+	// 		intersected_IDs = check.filter(function(n) {
+	// 		    return intersected_IDs.indexOf(n) !== -1;
+	// 		});
+			
+	// 		console.log("hello " + intersected_IDs);
+	// 	}
+	// }
+	
+	// console.log(Object.values(CURRENT_FILTER).length);
+	displayCards();
+	
 }
 
-// function CSVToArray( strData, strDelimiter ){
-// 		// Check to see if the delimiter is defined. If not,
-// 		// then default to comma.
-// 		strDelimiter = (strDelimiter || ",");
 
-// 		// Create a regular expression to parse the CSV values.
-// 		var objPattern = new RegExp(
-// 			(
-// 				// Delimiters.
-// 				"(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+function displayCards(){
+	for(var id in ID_TRACKER){
+		var card = document.getElementById("workoutCard_"+id);
+		if(FILTER_TRACKER.length==0){
+			card.style.display="block";
+		}else{
+			if(ID_TRACKER[id].length!= true){
+				card.style.display="block";
+			}else{
+				card.style.display="none";
+			}
+		}
+	}
 
-// 				// Quoted fields.
-// 				"(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-
-// 				// Standard fields.
-// 				"([^\"\\" + strDelimiter + "\\r\\n]*))"
-// 			),
-// 			"gi"
-// 			);
-
-
-// 		// Create an array to hold our data. Give the array
-// 		// a default empty first row.
-// 		var arrData = [[]];
-
-// 		// Create an array to hold our individual pattern
-// 		// matching groups.
-// 		var arrMatches = null;
-
-
-// 		// Keep looping over the regular expression matches
-// 		// until we can no longer find a match.
-// 		while (arrMatches = objPattern.exec( strData )){
-
-// 			// Get the delimiter that was found.
-// 			var strMatchedDelimiter = arrMatches[ 1 ];
-
-// 			// Check to see if the given delimiter has a length
-// 			// (is not the start of string) and if it matches
-// 			// field delimiter. If id does not, then we know
-// 			// that this delimiter is a row delimiter.
-// 			if (
-// 				strMatchedDelimiter.length &&
-// 				(strMatchedDelimiter != strDelimiter)
-// 				){
-
-// 				// Since we have reached a new row of data,
-// 				// add an empty row to our data array.
-// 				arrData.push( [] );
-
-// 			}
-
-
-// 			// Now that we have our delimiter out of the way,
-// 			// let's check to see which kind of value we
-// 			// captured (quoted or unquoted).
-// 			if (arrMatches[ 2 ]){
-
-// 				// We found a quoted value. When we capture
-// 				// this value, unescape any double quotes.
-// 				var strMatchedValue = arrMatches[ 2 ].replace(
-// 					new RegExp( "\"\"", "g" ),
-// 					"\""
-// 					);
-
-// 			} else {
-
-// 				// We found a non-quoted value.
-// 				var strMatchedValue = arrMatches[ 3 ];
-
-// 			}
-
-
-// 			// Now that we have our value string, let's add
-// 			// it to the data array.
-// 			arrData[ arrData.length - 1 ].push( strMatchedValue );
-// 		}
-
-// 		// Return the parsed data.
-// 		return( arrData );
-// 	}
-
-// function parseCSV(str) {
-//     var arr = [];
-//     var quote = false;  // 'true' means we're inside a quoted field
-
-//     // Iterate over each character, keep track of current row and column (of the returned array)
-//     for (var row = 0, col = 0, c = 0; c < str.length; c++) {
-//         var cc = str[c], nc = str[c+1];        // Current character, next character
-//         arr[row] = arr[row] || [];             // Create a new row if necessary
-//         arr[row][col] = arr[row][col] || '';   // Create a new column (start with empty string) if necessary
-
-//         // If the current character is a quotation mark, and we're inside a
-//         // quoted field, and the next character is also a quotation mark,
-//         // add a quotation mark to the current column and skip the next character
-//         if (cc == '"' && quote && nc == '"') { arr[row][col] += cc; ++c; continue; }
-
-//         // If it's just one quotation mark, begin/end quoted field
-//         if (cc == '"') { quote = !quote; continue; }
-
-//         // If it's a comma and we're not in a quoted field, move on to the next column
-//         if (cc == ',' && !quote) { ++col; continue; }
-
-//         // If it's a newline (CRLF) and we're not in a quoted field, skip the next character
-//         // and move on to the next row and move to column 0 of that new row
-//         if (cc == '\r' && nc == '\n' && !quote) { ++row; col = 0; ++c; continue; }
-
-//         // If it's a newline (LF or CR) and we're not in a quoted field,
-//         // move on to the next row and move to column 0 of that new row
-//         if (cc == '\n' && !quote) { ++row; col = 0; continue; }
-//         if (cc == '\r' && !quote) { ++row; col = 0; continue; }
-
-//         // Otherwise, append the current character to the current column
-//         arr[row][col] += cc;
-//     }
-//     return arr;
-// }
+}

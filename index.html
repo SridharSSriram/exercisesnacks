@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png"> -->
         
     <!--====== Animate CSS ======-->
     <link rel="stylesheet" href="assets/css/animate.css">
@@ -69,7 +69,6 @@
     <!--====== HEADER PART START ======-->
     
     <header class="header-area">
-	<h1>Make Movement a movement</h1>
 	
     </header>
     
@@ -82,42 +81,46 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="section-title text-center pb-40">
-                        <div class="line m-auto"></div>
-                        <h3 class="title">Exercise snacks<span> An easy way to fit  exercise snacks into your day</span></h3>
+                        <h4 class="title"><h1>Exercise snacks</h1><span><br> An easy way to fit  exercise snacks into your day</span></h3>
+                         <br><br> <div class="line m-auto"></div>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
             <form>
                 <div class="row">
                     <div class="checkbox-container"> 
-                        <div class="selectText bodyPart col-lg-4 col-md-7 col-sm-8" style="display:inline-block;">
+                        <div class="selectText col-lg-4 col-md-4 col-sm-8" style="display:inline-block;">
                             <h4>What part of your body are you trying to target?</h4>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="fullbody" name="fullbody" value="Full Body">
+                            <input onChange = "filter(this)" type="checkbox" id="fullbody" name="fullbody" value="Full Body">
                             <label for="fullbody"> Full Body</label><br>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="upperbody" name="upperbody" value="Upper Body">
+                            <input onChange = "filter(this)" type="checkbox" id="upperbody" name="upperbody" value="Upper Body">
                             <label for="upperbody"> Upper Body</label><br>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="lowerbody" name="lowerbody" value="Lower Body">
+                            <input onChange = "filter(this)" type="checkbox" id="lowerbody" name="lowerbody" value="Lower Body">
                             <label for="lowerbody"> Lower Body</label><br><br>
                         </div>
-                        <div class = "selectText timePart col-lg-4 col-md-7 col-sm-8" style="display:inline-block;">
+                        <div class = "selectText col-lg-4 col-md-4 col-sm-8" style="display:inline-block;">
                             <h4>How much time do you have?</h4>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="min5" name="min5" value="min5">
-                            <label for="min5">< 5 min</label><br>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="under10min" name="10min" value="under10min">
+                            <input onChange = "filter(this)" type="checkbox" id="under10min" name="under10min" value="under10min">
                             <label for="under10min">< 10 min.</label><br>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="over10min" name="over10min" value="over10min">
-                            <label for="over10min">> 10 min.</label>
+                            <input onChange = "filter(this)" type="checkbox" id="under20min" name="under20min" value="under20min">
+                            <label for="under20min">< 20 min.</label><br>
+                            <input onChange = "filter(this)" type="checkbox" id="over20min" name="over20min" value="over20min">
+                            <label for="over20min">> 20 min.</label>
                         </div>
-                        <div class = "selectText activityPart col-lg-4 col-md-7 col-sm-8" style="display:inline-block;">
+                        <div class = "selectText col-lg-4 col-md-4 col-sm-8" style="display:inline-block;">
                             <h4>What type of exercise snack are you looking for?</h4>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
+                            <input onChange = "filter(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
                             <label for="mobility">Mobility</label><br>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="conditioning" name="conditioning" value="conditioning">
+                            <input onChange = "filter(this)" type="checkbox" id="conditioning" name="conditioning" value="conditioning">
                             <label for="conditioning">Conditioning</label><br>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="core" name="core" value="core">
-                            <label for="core">Core</label>
-                            <input onChange = "valueUpdate(this)" type="checkbox" id="strength" name="strength" value="strength">
-                            <label for="strength">Strength</label>
+                            <input onChange = "filter(this)" type="checkbox" id="core" name="core" value="core">
+                            <label for="core">Core</label><br>
+                            <input onChange = "filter(this)" type="checkbox" id="strength" name="strength" value="strength">
+                            <label for="strength">Strength</label><br>
+                            <input onChange = "filter(this)" type="checkbox" id="workoutvariations" name="workoutvariations" value="workoutvariations">
+                            <label for="workoutvariations">Workout variations</label><br>
+                            <input onChange = "filter(this)" type="checkbox" id="breathingbloodflow" name="breathingbloodflow" value="breathingbloodflow">
+                            <label for="breathingbloodflow">Breathing & blood flow</label><br>
                         </div>
                     </div>
                       <!-- <center><button class="finalButton" onclick="filterResults()">Apply</button></center> -->
@@ -139,76 +142,12 @@
         <div class="container">
             <div class="footer-widget pb-100">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="footer-about mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <a class="logo" href="#">
-                                <img src="assets/images/logo.svg" alt="logo">
-                            </a>
-                            <p class="text">Lorem ipsum dolor sit amet consetetur sadipscing elitr, sederfs diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
-                            <ul class="social">
-                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-instagram-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                            </ul>
+                            <p class="text"><a style="color:red" href ="mailto:sridhar.s.sriram@gmail.com?subject=Exercise Snacks App"> reach out </a> with any questions or comments</p>
                         </div> <!-- footer about -->
                     </div>
-                    <div class="col-lg-5 col-md-7 col-sm-7">
-                        <div class="footer-link d-flex mt-50 justify-content-md-between">
-                            <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="footer-title">
-                                    <h4 class="title">Quick Link</h4>
-                                </div>
-                                <ul class="link">
-                                    <li><a href="#">Road Map</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Refund Policy</a></li>
-                                    <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="#">Pricing</a></li>
-                                </ul>
-                            </div> <!-- footer wrapper -->
-                            <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                                <div class="footer-title">
-                                    <h4 class="title">Resources</h4>
-                                </div>
-                                <ul class="link">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Page</a></li>
-                                    <li><a href="#">Portfolio</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div> <!-- footer wrapper -->
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-md-5 col-sm-5">
-                        <div class="footer-contact mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-                            <div class="footer-title">
-                                <h4 class="title">Contact Us</h4>
-                            </div>
-                            <ul class="contact">
-                                <li>+809272561823</li>
-                                <li>info@gmail.com</li>
-                                <li>www.yourweb.com</li>
-                                <li>123 Stree New York City , United <br> States Of America 750.</li>
-                            </ul>
-                        </div> <!-- footer contact -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- footer widget -->
-            <div class="footer-copyright">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright d-sm-flex justify-content-between">
-                            <div class="copyright-content">
-                                <p class="text">Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
-                            </div> <!-- copyright content -->
-                        </div> <!-- copyright -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- footer copyright -->
         </div> <!-- container -->
-        <div id="particles-2"></div>
     </footer>
     
     <!--====== FOOTER PART ENDS ======-->
@@ -219,7 +158,6 @@
 
     <!--====== BACK TOP TOP PART ENDS ======-->   
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src = "jquery-csv-main/src/jquery.csv.js"></script>
     <script src="index.js"></script>
     <script type="text/text" src="assets/data/exercisesnacks_workout_archive.csv"></script>
     <script type="text/javascript" src="assets/data/exercisesnacks_workout_archive.json"></script>
@@ -264,7 +202,7 @@
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
     <script type="text/javascript">
-        load_app(data);
+        loadApp(data);
     </script>
     
 </body>
