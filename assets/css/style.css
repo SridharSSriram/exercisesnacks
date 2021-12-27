@@ -551,6 +551,7 @@ p {
       padding-top: 30px; } }
 
 
+
 /*===========================
       04.SERVICES css 
 ===========================*/
@@ -664,6 +665,36 @@ p {
       -o-transform: rotate(25deg);
       transform: rotate(25deg); }
 
+
+#type-box{
+  grid-area: type;
+  /*width:px;*/
+}
+#body-box{
+  grid-area: body;
+  /*width:30vw;*/
+}
+#time-box{
+  grid-area:time;
+  /*width:30vw;*/
+}
+.checkbox-container{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);  
+  grid-column-gap: 50px;
+  grid-template-areas: "time body type type";
+}
+
+@media only screen and (max-width: 850px){
+  .checkbox-container{
+    display:grid;
+    grid-template-columns: 1fr;  
+    grid-template-areas:
+    "time"
+    "body"
+    "type";
+  }
+}
 /*===========================
        11.FOOTER  css 
 ===========================*/

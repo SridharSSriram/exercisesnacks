@@ -87,9 +87,9 @@
                 </div>
             </div> <!-- row -->
             <form>
-                <div class="row">
+                <!-- <div class="row"> -->
                     <div class="checkbox-container"> 
-                        <div class="selectText col-lg-4 col-md-4 col-sm-8" style="display:inline-block;">
+                        <div id="body-box" style="display:inline-block;">
                             <h4>What part of your body are you trying to target?</h4>
                             <input onChange = "filter(this)" type="checkbox" id="fullbody" name="fullbody" value="Full Body">
                             <label for="fullbody"> Full Body</label><br>
@@ -98,7 +98,9 @@
                             <input onChange = "filter(this)" type="checkbox" id="lowerbody" name="lowerbody" value="Lower Body">
                             <label for="lowerbody"> Lower Body</label><br><br>
                         </div>
-                        <div class = "selectText col-lg-4 col-md-4 col-sm-8" style="display:inline-block;">
+                        <br>
+                        <br>
+                        <div id="time-box" style="display:inline-block;">
                             <h4>How much time do you have?</h4>
                             <input onChange = "filter(this)" type="checkbox" id="under10min" name="under10min" value="under10min">
                             <label for="under10min">< 10 min.</label><br>
@@ -107,7 +109,9 @@
                             <input onChange = "filter(this)" type="checkbox" id="over20min" name="over20min" value="over20min">
                             <label for="over20min">> 20 min.</label>
                         </div>
-                        <div class = "selectText col-lg-4 col-md-4 col-sm-8" style="display:inline-block;">
+                        <br>
+                        <br>
+                        <div id="type-box" style="display:inline-block;">
                             <h4>What type of exercise snack are you looking for?</h4>
                             <input onChange = "filter(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
                             <label for="mobility">Mobility</label><br>
@@ -122,10 +126,12 @@
                             <input onChange = "filter(this)" type="checkbox" id="breathingbloodflow" name="breathingbloodflow" value="breathingbloodflow">
                             <label for="breathingbloodflow">Breathing & blood flow</label><br>
                         </div>
+                        <br>
+                        <br>
                     </div>
                       <!-- <center><button class="finalButton" onclick="filterResults()">Apply</button></center> -->
                       <!-- <button onclick="toggleVisibility()"> Click dis "tingy </button> -->
-                </div>
+                <!-- </div> -->
             </form>
             <div class="row justify-content-center" id="cardcontainer">
             </div>

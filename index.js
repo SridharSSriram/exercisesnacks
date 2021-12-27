@@ -5,7 +5,7 @@ TO-DO LISTS:
 [] Functionality
 [] Button
 [] README
-[] Tinyurl
+[X] Tinyurl https://tinyurl.com/ExerciseSnacksWebApp
 [] Message
 [X] Footer
 [] Disclaimer privacy
@@ -15,7 +15,7 @@ TO-DO LISTS:
 
 */
 
-
+console.log(getComputedStyle(document.getElementById("time-box")).width);
 var EXERCISE_SNACKS_DATABASE=[];
 var CURRENT_FILTER = {};
 var ID_TRACKER ={};
