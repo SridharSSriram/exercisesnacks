@@ -695,6 +695,10 @@ p {
     "type";
   }
 }
+
+#fullbody:checked{
+  background-color:black;
+}
 /*===========================
        11.FOOTER  css 
 ===========================*/
@@ -812,7 +816,7 @@ p {
 /*===== BACK TO TOP =====*/
 .back-to-top {
   font-size: 20px;
-  color: #fff;
+  color: red;
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -820,9 +824,11 @@ p {
   height: 40px;
   line-height: 40px;
   /*border-radius: 5px;*/
-  background: -webkit-linear-gradient(left, #444444 0%, #B9BDC4 100%);
+/*  background: -webkit-linear-gradient(left, #444444 0%, #B9BDC4 100%);
   background: -o-linear-gradient(left, #444444 0%, #B9BDC4 100%);
-  background: linear-gradient(to right, #444444 0%, #B9BDC4 100%);
+  background: linear-gradient(to right, #444444 0%, #B9BDC4 100%);*/
+  background: white;
+  border: 1px solid red;
   text-align: center;
   z-index: 99;
   -webkit-transition: all 0.3s ease-out 0s;
@@ -832,4 +838,10 @@ p {
   transition: all 0.3s ease-out 0s;
   display: none; }
   .back-to-top:hover {
-    color: #fff; }
+    color: red; }
+
+
+input{
+  background-color: white;
+  border-color:red;
+}

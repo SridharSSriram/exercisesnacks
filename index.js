@@ -1,7 +1,7 @@
 /*
 TO-DO LISTS:
 []Responsive sizing
-[] Format of 3 dropdowns
+[X] Format of 3 dropdowns
 [] Functionality
 [] Button
 [] README
@@ -14,8 +14,7 @@ TO-DO LISTS:
 [] Selection logic
 
 */
-
-console.log(getComputedStyle(document.getElementById("time-box")).width);
+alert("this site does not collect any of your information");
 var EXERCISE_SNACKS_DATABASE=[];
 var CURRENT_FILTER = {};
 var ID_TRACKER ={};
