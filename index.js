@@ -3,7 +3,7 @@ TO-DO LISTS:
 []Responsive sizing
 [X] Format of 3 dropdowns
 [] Functionality
-[] Button
+[X] Button
 [] README
 [X] Tinyurl https://tinyurl.com/ExerciseSnacksWebApp
 [] Message
@@ -12,36 +12,51 @@ TO-DO LISTS:
 [] Disclaimer inspo
 [] CSS scrub
 [] Selection logic
+[] total # of workouts
 
 */
-alert("this site does not collect any of your information");
+
+
 var EXERCISE_SNACKS_DATABASE=[];
 var CURRENT_FILTER = {};
 var ID_TRACKER ={};
 var FILTER_TRACKER=[];
 var UNIVERSAL_ID = [];
+var DISPLAYED_WORKOUTS = undefined;
+var TIME = ["under10min","under20min","over20min"];
+var TYPE = ["mobility","conditioning","core","strength","workoutvariations","breathingbloodflow"];
+var BODYPART = ["fullbody","upperbody","lowerbody"];
 
 function loadApp(database){
 	EXERCISE_SNACKS_DATABASE = database;
+	
+	DISPLAYED_WORKOUTS = EXERCISE_SNACKS_DATABASE.length;
+	
+	updateTotalWorkouts(DISPLAYED_WORKOUTS);
+
 	
 	var card_container = document.getElementById("cardcontainer");
 	for (var i = 0; i < database.length; i++) {
 		card_container.appendChild(generateHTMLCard(database[i]));
 	}
-	setUniversalIDtracker();
+	setIDTracker();
 	
 }
 
+function updateTotalWorkouts(total_num){
+	var total_workouts = document.getElementById('total-snacks-text');
+	total_workouts.innerHTML= "<span style='color:red'>" + total_num + "</span> exercise snacks";
 
+}
 
-function setUniversalIDtracker(){
+function setIDTracker(){
 	for(var i =0; i<Object.values(EXERCISE_SNACKS_DATABASE).length; i++){
 		var key = String(i);
 		ID_TRACKER[key] = [true];
+		// ID_TRACKER[key] = false;
 	}
 }
 
-console.log(ID_TRACKER);
 
 function generateHTMLCard(exercise_snack){
 	var wrapper_div=document.createElement('div');
@@ -93,9 +108,6 @@ function generateHTMLCard(exercise_snack){
 }
 
 function filter(filter_value){
-	var time = ["under10min","under20min","over20min"];
-	var type = ["mobility","conditioning","core","strength","workoutvariations","breathingbloodflow"];
-	var bodypart = ["fullbody","upperbody","lowerbody"];
 
 	var value = filter_value.value.toLowerCase().replaceAll(" ","").replaceAll("&","");
 
@@ -106,10 +118,10 @@ function filter(filter_value){
 	}
 
 	var selected_id = [];
-	var test = value in time;
+	var test = value in TIME;
 
 	EXERCISE_SNACKS_DATABASE.forEach(function(workoutEntry){
-		if(time.includes(value)){
+		if(TIME.includes(value)){
 			var snack_time= parseInt(workoutEntry.time.replaceAll(" min.", ""));
 
 			if(value=="under10min" && snack_time <=10){
@@ -119,7 +131,7 @@ function filter(filter_value){
 			} else if(value =="over20min" && snack_time > 20){
 				selected_id.push(workoutEntry.id);
 			}
-		} else if(type.includes(value)){
+		} else if(TYPE.includes(value)){
 			var snack_type = workoutEntry.type.toLowerCase().replaceAll(" ","").replaceAll("&","");
 			if(value=="mobility" && snack_type.includes("mobility")){
 	 			selected_id.push(workoutEntry.id);
@@ -134,7 +146,7 @@ function filter(filter_value){
 	 		} else if(value=="breathingbloodflow" && snack_type.includes("breathingbloodflow")){
 	 			selected_id.push(workoutEntry.id);
 	 		}
-		} else if(bodypart.includes(value)){
+		} else if(BODYPART.includes(value)){
 			var snack_bodypart = workoutEntry.bodyPart.toLowerCase().replaceAll(" ","").replaceAll(" & ","");
 			if(value=="fullbody" && snack_bodypart.includes("fullbody")){
 	 			selected_id.push(workoutEntry.id);
@@ -160,16 +172,20 @@ function filter(filter_value){
 
 	if(filter_checked){
 		CURRENT_FILTER[value] = selected_id;
-		console.log(Object.keys(CURRENT_FILTER).length);
+		if(!FILTER_TRACKER.includes(value)){
+			FILTER_TRACKER.push(value);
+		}
+
+		var intersect_or_union = isIntersection();
+
 		if(UNIVERSAL_ID.length == 0){
 			UNIVERSAL_ID = selected_id;
 		}
 		if(Object.keys(CURRENT_FILTER).length>1){
-	
 			UNIVERSAL_ID = selected_id.filter(function(n) {
 		    	return UNIVERSAL_ID.indexOf(n) !== -1;
 			});
-			console.log(UNIVERSAL_ID);
+			// console.log(UNIVERSAL_ID);
 			
 		}
 		for(var i = 0; i < UNIVERSAL_ID.length; i++){
@@ -177,28 +193,52 @@ function filter(filter_value){
 				ID_TRACKER[UNIVERSAL_ID[i]] = [value];
 			}else{
 				ID_TRACKER[UNIVERSAL_ID[i]].push(value);
+				// ID_TRACKER[UNIVERSAL_ID[i]] =true;
 			}
 		}
 		// console.log(FILTER_TRACKER);
-		if(!FILTER_TRACKER.includes(value)){
-			FILTER_TRACKER.push(value);
-		}
-		// console.log(FILTER_TRACKER);
+		// console.log("here: " + UNIVERSAL_ID);
+		var grand_arr = Array.from(Array(EXERCISE_SNACKS_DATABASE.length).keys());
+		var remaining_arr = grand_arr.filter(x => !UNIVERSAL_ID.includes(x));
+
+		// for(var j = 0; j<remaining_arr.length;j++){
+		// 	ID_TRACKER[UNIVERSAL_ID[j]] = false;
+		// }
+
+		updateTotalWorkouts(UNIVERSAL_ID.length);
 	}else{
+		console.log(CURRENT_FILTER.length);
+		for(var i; i >CURRENT_FILTER.length; i++){
+			console.log("checking: " + CURRENT_FILTER[i]);
+
+		}
 		if(value in CURRENT_FILTER){
 			// console.log("pre operations" + FILTER_TRACKER);
-			
+			// if(Object.values(CURRENT_FILTER) == 1)
 			var filter_index = FILTER_TRACKER.indexOf(value);
 			
 			// console.log("index check "+ filter_index);
 			if(filter_index>-1){
+				// console.log("before " + FILTER_TRACKER);
 				if(FILTER_TRACKER.length==1){
-					console.log("size of FILTER_TRACKER " + FILTER_TRACKER.length);
-					console.log(FILTER_TRACKER);
 					FILTER_TRACKER=[];
+					updateTotalWorkouts(EXERCISE_SNACKS_DATABASE.length);
+				}else{
+					var new_filter_tracker = [];
+					for(var item in FILTER_TRACKER){
+						if(FILTER_TRACKER[item]!=value){
+							new_filter_tracker.push(FILTER_TRACKER[item]);
+						}
+					}
+					FILTER_TRACKER=new_filter_tracker;
 				}
-				FILTER_TRACKER=FILTER_TRACKER.splice(filter_index,1);
+				// console.log("after: " + FILTER_TRACKER);
 			}
+			/*
+			logic: A decouples from B
+			now, you need to recreate B (intersection of previous), without A, and then reset all
+			*/
+
 			// console.log(FILTER_TRACKER);
 			for (var id in CURRENT_FILTER[value]){
 				var id_index = ID_TRACKER[id].indexOf(value);
@@ -215,27 +255,31 @@ function filter(filter_value){
 			delete CURRENT_FILTER[value];
 		}
 	}
-	// var intersected_IDs = CURRENT_FILTER[Object.values(CURRENT_FILTER)[0]];
-	
-	// if(Object.values(CURRENT_FILTER).length >1){
-	// 	for(var i = 1; i < Object.values(CURRENT_FILTER).length; i++){
-	// 		console.log("to validate " + Object.values(CURRENT_FILTER));
-	// 		var check =Object.values(CURRENT_FILTER)[i];
-	// 		console.log("check: " + check);
-			
-	// 		intersected_IDs = check.filter(function(n) {
-	// 		    return intersected_IDs.indexOf(n) !== -1;
-	// 		});
-			
-	// 		console.log("hello " + intersected_IDs);
-	// 	}
-	// }
-	
-	// console.log(Object.values(CURRENT_FILTER).length);
 	displayCards();
+
 	
 }
 
+function isIntersection(){
+	var count = [0,0,0];
+	for(var index in FILTER_TRACKER){
+		if(BODYPART.includes(FILTER_TRACKER[index])){
+			count[0]++;
+		}else if(TIME.includes(FILTER_TRACKER[index])){
+			count[1]++;
+		}else if(TYPE.includes(FILTER_TRACKER[index])){
+			count[2]++;
+		}
+	}
+	var test = 0;
+	for(var check in count){
+		if(count[check]!=0){
+			test++;
+		}
+	}
+	return test==1;
+
+}
 
 function displayCards(){
 	for(var id in ID_TRACKER){
