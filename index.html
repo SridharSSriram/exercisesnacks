@@ -88,6 +88,17 @@
             <form>
                 <!-- <div class="row"> -->
                     <div class="checkbox-container"> 
+                        <div id="time-box" style="display:inline-block;">
+                            <h4>How much time do you have?</h4>
+                            <input onChange = "filter(this)" type="checkbox" id="under10min" name="under10min" value="under10min">
+                            <label for="under10min">< 10 min.</label><br>
+                            <input onChange = "filter(this)" type="checkbox" id="under20min" name="under20min" value="under20min">
+                            <label for="under20min">< 20 min.</label><br>
+                            <input onChange = "filter(this)" type="checkbox" id="over20min" name="over20min" value="over20min">
+                            <label for="over20min">> 20 min.</label>
+                            <br>
+                            <br>
+                        </div>
                         <div id="body-box" style="display:inline-block;">
                             <h4>What part of your body are you trying to target?</h4>
                             <input onChange = "filter(this)" type="checkbox" id="fullbody" name="fullbody" value="Full Body">
@@ -97,19 +108,7 @@
                             <input onChange = "filter(this)" type="checkbox" id="lowerbody" name="lowerbody" value="Lower Body">
                             <label for="lowerbody"> Lower Body</label><br><br>
                         </div>
-                        <br>
-                        <br>
-                        <div id="time-box" style="display:inline-block;">
-                            <h4>How much time do you have?</h4>
-                            <input onChange = "filter(this)" type="checkbox" id="under10min" name="under10min" value="under10min">
-                            <label for="under10min">< 10 min.</label><br>
-                            <input onChange = "filter(this)" type="checkbox" id="under20min" name="under20min" value="under20min">
-                            <label for="under20min">< 20 min.</label><br>
-                            <input onChange = "filter(this)" type="checkbox" id="over20min" name="over20min" value="over20min">
-                            <label for="over20min">> 20 min.</label>
-                        </div>
-                        <br>
-                        <br>
+
                         <div id="type-box" style="display:inline-block;">
                             <h4>What type of exercise snack are you looking for?</h4>
                             <input onChange = "filter(this)" type="checkbox" id="mobility" name="mobility" value="mobility">
