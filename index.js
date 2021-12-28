@@ -1,18 +1,17 @@
 /*
 TO-DO LISTS:
-[]Responsive sizing
 [X] Format of 3 dropdowns
 [] Functionality
 [X] Button
 [X] README
 [X] Tinyurl https://tinyurl.com/ExerciseSnacksWebApp
-[] Message
+[X] Message
 [X] Footer
-[] Disclaimer privacy
-[] Disclaimer inspo
+[N/A] Disclaimer privacy
+[X] Disclaimer inspo
 [] CSS scrub
 [] Selection logic
-[] total # of workouts
+[X] total # of workouts
 
 */
 
@@ -39,7 +38,12 @@ function loadApp(database){
 	for (var i = 0; i < database.length; i++) {
 		card_container.appendChild(generateHTMLCard(database[i]));
 	}
-	setIDTracker();
+	// setIDTracker();
+	for(var i =0; i<Object.values(EXERCISE_SNACKS_DATABASE).length; i++){
+		var key = String(i);
+		ID_TRACKER[key] = false;
+		// ID_TRACKER[key] = false;
+	}
 	
 }
 
@@ -49,13 +53,6 @@ function updateTotalWorkouts(total_num){
 
 }
 
-function setIDTracker(){
-	for(var i =0; i<Object.values(EXERCISE_SNACKS_DATABASE).length; i++){
-		var key = String(i);
-		ID_TRACKER[key] = [true];
-		// ID_TRACKER[key] = false;
-	}
-}
 
 
 function generateHTMLCard(exercise_snack){
@@ -118,7 +115,6 @@ function filter(filter_value){
 	}
 
 	var selected_id = [];
-	var test = value in TIME;
 
 	EXERCISE_SNACKS_DATABASE.forEach(function(workoutEntry){
 		if(TIME.includes(value)){
@@ -159,16 +155,6 @@ function filter(filter_value){
 
 	});
 
-	//filter_checked == true indicates that the checkbox has been checked
-	/*
-	This is the breakdown of the following section:
-	1. If the checkbox is CHECKED:
-		1A: add checked value to CURRENT_FILTER
-		1B: iterate through the list of IDs and add the checked box ("under10min") to each of the IDs' entries in the ID_TRACKER dictionary
-	2. If the checkbox is UNCHECKED:
-		2A: iterate through list of IDs based on checked box's value enty in the CURRENT FILTER dictionary and remove the checkbox value from the id's key-value pair
-		2B: remove value from CURRENT_FILTER
-	*/
 
 	if(filter_checked){
 		CURRENT_FILTER[value] = selected_id;
@@ -176,50 +162,21 @@ function filter(filter_value){
 			FILTER_TRACKER.push(value);
 		}
 
-		var intersect_or_union = isIntersection();
+		var intersect_or_union = unionOrIntersection();
 
-		if(UNIVERSAL_ID.length == 0){
-			UNIVERSAL_ID = selected_id;
-		}
-		if(Object.keys(CURRENT_FILTER).length>1){
-			UNIVERSAL_ID = selected_id.filter(function(n) {
-		    	return UNIVERSAL_ID.indexOf(n) !== -1;
-			});
-			// console.log(UNIVERSAL_ID);
-			
-		}
-		for(var i = 0; i < UNIVERSAL_ID.length; i++){
-			if(ID_TRACKER[UNIVERSAL_ID[i]] == true){
-				ID_TRACKER[UNIVERSAL_ID[i]] = [value];
-			}else{
-				ID_TRACKER[UNIVERSAL_ID[i]].push(value);
-				// ID_TRACKER[UNIVERSAL_ID[i]] =true;
-			}
-		}
-		// console.log(FILTER_TRACKER);
-		// console.log("here: " + UNIVERSAL_ID);
-		var grand_arr = Array.from(Array(EXERCISE_SNACKS_DATABASE.length).keys());
-		var remaining_arr = grand_arr.filter(x => !UNIVERSAL_ID.includes(x));
+		updateTotalWorkouts(intersect_or_union.length);
 
-		// for(var j = 0; j<remaining_arr.length;j++){
-		// 	ID_TRACKER[UNIVERSAL_ID[j]] = false;
-		// }
+		var big_arr = Array.from(Array(EXERCISE_SNACKS_DATABASE.length).keys());
+		var remain_arr = big_arr.filter(x => !intersect_or_union.includes(x));
+		setIDTracker(intersect_or_union,remain_arr);
 
-		updateTotalWorkouts(UNIVERSAL_ID.length);
 	}else{
-		console.log(CURRENT_FILTER.length);
-		for(var i; i >CURRENT_FILTER.length; i++){
-			console.log("checking: " + CURRENT_FILTER[i]);
 
-		}
 		if(value in CURRENT_FILTER){
-			// console.log("pre operations" + FILTER_TRACKER);
-			// if(Object.values(CURRENT_FILTER) == 1)
+
 			var filter_index = FILTER_TRACKER.indexOf(value);
 			
-			// console.log("index check "+ filter_index);
 			if(filter_index>-1){
-				// console.log("before " + FILTER_TRACKER);
 				if(FILTER_TRACKER.length==1){
 					FILTER_TRACKER=[];
 					updateTotalWorkouts(EXERCISE_SNACKS_DATABASE.length);
@@ -232,27 +189,21 @@ function filter(filter_value){
 					}
 					FILTER_TRACKER=new_filter_tracker;
 				}
-				// console.log("after: " + FILTER_TRACKER);
 			}
-			/*
-			logic: A decouples from B
-			now, you need to recreate B (intersection of previous), without A, and then reset all
-			*/
 
-			// console.log(FILTER_TRACKER);
-			for (var id in CURRENT_FILTER[value]){
-				var id_index = ID_TRACKER[id].indexOf(value);
-				if(id_index>-1){
-					// ID_TRACKER[id] = ID_TRACKER[id].splice(id_index,1);
-					if(id_index==1){
-						ID_TRACKER[id] = [true];
-					}else{
-						ID_TRACKER[id]=ID_TRACKER[id].splice(id_index,1);
-
-					}
-				}
-			}
 			delete CURRENT_FILTER[value];
+
+			var intersect_or_union = unionOrIntersection();
+			if(intersect_or_union.length==0){
+				updateTotalWorkouts(EXERCISE_SNACKS_DATABASE.length);
+				setIDTracker(0,0);
+			}else{
+				updateTotalWorkouts(intersect_or_union.length);
+				var big_arr = Array.from(Array(EXERCISE_SNACKS_DATABASE.length).keys());
+				var remain_arr = big_arr.filter(x => !intersect_or_union.includes(x));
+				setIDTracker(intersect_or_union,remain_arr);
+			}
+			
 		}
 	}
 	displayCards();
@@ -260,34 +211,124 @@ function filter(filter_value){
 	
 }
 
-function isIntersection(){
-	var count = [0,0,0];
+function unionOrIntersection(){
+	var tracker = {};
+	var body = [];
+	var time = [];
+	var type=[];
 	for(var index in FILTER_TRACKER){
 		if(BODYPART.includes(FILTER_TRACKER[index])){
-			count[0]++;
+			body.push(FILTER_TRACKER[index]);
 		}else if(TIME.includes(FILTER_TRACKER[index])){
-			count[1]++;
+			time.push(FILTER_TRACKER[index]);
 		}else if(TYPE.includes(FILTER_TRACKER[index])){
-			count[2]++;
+			type.push(FILTER_TRACKER[index]);
 		}
 	}
-	var test = 0;
-	for(var check in count){
-		if(count[check]!=0){
-			test++;
-		}
+	if(body.length>1){
+		tracker["body"] = unionArray(body);
+	}else if(body.length==1){
+		tracker["body"] = CURRENT_FILTER[body];
 	}
-	return test==1;
 
+	if(time.length>1){
+		tracker["time"] = unionArray(time);
+	}else if(time.length==1){
+		tracker["time"] = CURRENT_FILTER[time];
+	}
+
+
+	if(type.length>1){
+		tracker["type"] = unionArray(type);
+	}else if(type.length==1){
+		tracker["type"] = CURRENT_FILTER[type];
+	}
+
+	var final_array =[];
+	if(tracker["body"] ==undefined || tracker["time"] ==undefined || tracker["type"] == undefined){
+		
+		if(tracker["body"] != undefined && ((tracker["time"]==undefined) && tracker["type"]==undefined)){
+			final_array=tracker["body"]
+		} else if((tracker["body"] != undefined && tracker["time"]!=undefined) && tracker["type"]==undefined){
+			final_array=tracker["body"].filter(function(n){
+				return tracker["time"].indexOf(n)!==-1;
+			});
+		} else if((tracker["body"] != undefined && tracker["type"]!=undefined) && tracker["time"]==undefined){
+			final_array=tracker["body"].filter(function(n){
+				return tracker["type"].indexOf(n)!==-1;
+			});
+		} 
+		else if(tracker["time"] != undefined && ((tracker["body"]==undefined) && tracker["type"]==undefined)){
+			final_array=tracker["time"];
+
+		}else if((tracker["time"] != undefined &&tracker["type"]!=undefined) && tracker["body"]==undefined){
+			final_array=tracker["time"].filter(function(n){
+				return tracker["type"].indexOf(n)!==-1;
+			});
+		} else if(tracker["type"] != undefined && ((tracker["time"]==undefined) && tracker["body"]==undefined)){
+			final_array=tracker["type"];
+		}
+
+	}else{
+		final_array = tracker["body"].filter(function(n){
+			return tracker["time"].indexOf(n)!==-1;
+		});
+
+		final_array = tracker["type"].filter(function(n){
+			return final_array.indexOf(n)!==-1;
+		});
+	}
+
+	return final_array;
+
+
+
+}
+
+function unionArray(array){
+	var returned_array = CURRENT_FILTER[array[0]];
+	for(var index=1; index<array.length; index++){
+		returned_array = arrayUnique(returned_array.concat(CURRENT_FILTER[array[index]]));
+	}
+	// console.log(returned_array);
+	return returned_array;
+}
+
+function arrayUnique(array){
+	var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+}
+
+function setIDTracker(true_arr, false_arr){
+	if(true_arr==false_arr && true_arr==0){
+		for(var z = 0; z<EXERCISE_SNACKS_DATABASE.length;z++){
+			ID_TRACKER[z] = true;
+		}
+	}
+	for(var i =0; i<true_arr.length;i++){
+		ID_TRACKER[true_arr[i]]=true;
+	}
+	for(var j =0; j<false_arr.length;j++){
+		ID_TRACKER[false_arr[j]]=false;
+	}
 }
 
 function displayCards(){
 	for(var id in ID_TRACKER){
+		// console.log(ID_TRACKER[id]);
 		var card = document.getElementById("workoutCard_"+id);
 		if(FILTER_TRACKER.length==0){
 			card.style.display="block";
 		}else{
-			if(ID_TRACKER[id].length!= true){
+			if(ID_TRACKER[id]== true){
+				// console.log("i'm here!");
 				card.style.display="block";
 			}else{
 				card.style.display="none";

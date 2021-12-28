@@ -654,6 +654,24 @@ p {
   background-color: white;
   padding: 0px 10px 2px 10px;
 }
+
+#ex_snacks_link{
+  color: white;
+  border-style: solid;
+  font-size: 80%;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 10px;
+  background-color: black;
+  padding: 0px 10px 2px 10px;
+}
+
+#ex_snacks_link:hover{
+  background-color: white;
+  color: red;
+  border-color:red;
+}
+
   
   /* COME HERE FOR CARD BORDER COLOR */
   .single-services:hover {
