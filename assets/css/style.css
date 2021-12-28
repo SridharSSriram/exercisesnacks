@@ -36,7 +36,8 @@ body {
   font-style: normal;
   /*color: #6A6972;*/
   color: black;
-  overflow-x: hidden; }
+  overflow-x: hidden; 
+}
 
 * {
   margin: 0;
