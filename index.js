@@ -4,7 +4,7 @@ TO-DO LISTS:
 [X] Format of 3 dropdowns
 [] Functionality
 [X] Button
-[] README
+[X] README
 [X] Tinyurl https://tinyurl.com/ExerciseSnacksWebApp
 [] Message
 [X] Footer
